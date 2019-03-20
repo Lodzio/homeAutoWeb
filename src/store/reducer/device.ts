@@ -1,5 +1,5 @@
 const initialState = {
-    test: 1
+    devices: []
 }
 
 

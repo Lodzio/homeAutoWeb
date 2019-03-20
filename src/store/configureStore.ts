@@ -1,9 +1,9 @@
 import { applyMiddleware, combineReducers, compose, createStore} from "redux";
 import thunk from "redux-thunk";
-import testReducer from './reducer/element'
+import deviceReducer from './reducer/device'
 
 const rootReducer = combineReducers({
-    test: testReducer
+    device: deviceReducer
 });
 
 const configureStore = () => {

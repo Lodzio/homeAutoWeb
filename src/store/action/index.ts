@@ -1,0 +1,1 @@
+export {addNewDevice} from './device'

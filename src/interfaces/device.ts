@@ -1,0 +1,3 @@
+interface IDevice {
+    title: string
+}
