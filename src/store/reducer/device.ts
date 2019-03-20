@@ -1,5 +1,9 @@
 const initialState = {
-    devices: []
+    devices: [],
+    deviceTypes: [
+        {label: 'Button', value: 'button'},
+        {label: 'Sensor', value: 'sensor'},
+    ]
 }
 
 

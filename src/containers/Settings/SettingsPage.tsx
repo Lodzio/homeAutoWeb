@@ -7,7 +7,9 @@ class SettingsPage extends React.Component<ISettingsPageProps> {
     public state: ISettingsPageState = {
         newDevice: {
             title: '',
+            type: ''
         },
+        isAddNewDeviceFormOpen: false,
     };
 
     public constructor(props: ISettingsPageProps) {
@@ -17,10 +19,23 @@ class SettingsPage extends React.Component<ISettingsPageProps> {
 
     public render() {
         return (
-            <Settings 
+            <Settings
+            deviceTypes={this.props.deviceTypes}
+            onAddNewDeviceFormOpenButtonHandler={this.onAddNewDeviceFormOpenButtonHandler}
+            isAddNewDeviceFormOpen={this.state.isAddNewDeviceFormOpen}
             isAddNewDeviceButtonActive={this.isAddNewDeviceButtonActive()} 
-            onAddNewDeviceButtonHandler={() => this.props.addNewDevice(this.state.newDevice)}/>
+            onAddNewDeviceButtonHandler={() => this.props.addNewDevice(this.state.newDevice)}
+            onTypeChangeHandles={this.onTypeChangeHandles}
+            newDeviceType={this.state.newDevice.type}/>
         );
+    }
+
+    private onTypeChangeHandles = (value: string) => {
+        this.setState({newDevice: {type: value}})
+    }   
+
+    private onAddNewDeviceFormOpenButtonHandler = () => {
+        this.setState({isAddNewDeviceFormOpen: true})
     }
 
     private isAddNewDeviceButtonActive = () => {
@@ -30,7 +45,7 @@ class SettingsPage extends React.Component<ISettingsPageProps> {
 
 const mapStateToProps = (state: any) => {
     return {
-        
+        deviceTypes: state.device.deviceTypes
     }
 };
 

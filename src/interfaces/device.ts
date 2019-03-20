@@ -1,3 +1,4 @@
 interface IDevice {
-    title: string
+    title: string,
+    type: string
 }
