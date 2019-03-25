@@ -1,5 +1,17 @@
 .top-bar {
+    display: flex;
+}
 
+.top-bar .time {
+    font-weight: bold;
+    font-size: 35px;
+    color: #1E1E1E;
+}
+
+.top-bar .typography {
+    flex: 1;
+    flex-direction: row;
+    display: flex;
 }
 
 .top-bar .icon {
@@ -10,4 +22,9 @@
 
 .top-bar .active .icon {
     color: #b1de00;
+}
+
+.top-bar .icon:hover {
+    background-color: #2C5702;
+    border-radius: 5px;
 }

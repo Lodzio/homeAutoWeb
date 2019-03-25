@@ -25,10 +25,21 @@ class SettingsPage extends React.Component<ISettingsPageProps> {
             onAddNewDeviceFormOpenButtonHandler={this.onAddNewDeviceFormOpenButtonHandler}
             isAddNewDeviceFormOpen={this.state.isAddNewDeviceFormOpen}
             isAddNewDeviceButtonActive={this.isAddNewDeviceButtonActive()} 
-            onAddNewDeviceButtonHandler={() => this.props.addNewDevice(this.state.newDevice)}
+            onAddNewDeviceButtonHandler={this.onAddNewDeviceButtonHandler}
             onTypeChangeHandles={this.onTypeChangeHandles}
             newDeviceType={this.state.newDevice.type}/>
         );
+    }
+
+    private onAddNewDeviceButtonHandler = () => {
+        this.setState({
+            newDevice: {
+                title: '',
+                type: ''
+            },
+            isAddNewDeviceFormOpen: false,
+        })
+        this.props.addNewDevice(this.state.newDevice)
     }
 
     private onNewDeviceTitleChangeHandler = (e: any) => {
@@ -44,7 +55,7 @@ class SettingsPage extends React.Component<ISettingsPageProps> {
     }
 
     private isAddNewDeviceButtonActive = () => {
-        return (this.state.newDevice.title !== "")
+        return (this.state.newDevice.title !== "" && this.state.newDevice.type !== "")
     }
 }
 

@@ -1,8 +1,11 @@
 .new-device-form {
     display: flex;
     flex-direction: column;
+    background-color: #262626;
+    padding: 20px;
+    border-radius: 3px;
 }
 
 .new-device-form .text-field {
-    border-bottom-color: blue;
+    margin-bottom: 10px;
 }

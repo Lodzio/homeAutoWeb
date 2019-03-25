@@ -1,0 +1,17 @@
+.devices-list-item {
+    display: flex;
+    flex-direction: row;
+    background-color: #262626;
+    border-radius: 3px;
+    padding: 10px;
+    margin: 10px;
+    color: #468902;
+}
+
+.devices-list-item .icon{
+    margin-right: 10px;
+}
+
+.devices-list-item .title{
+
+}

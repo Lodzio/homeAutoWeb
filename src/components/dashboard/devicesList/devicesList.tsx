@@ -7,7 +7,7 @@ const devicesList = (props: IDevicesList) => {
 
     const items = props.devices.map((item, index: number) => {
         return (
-        <Grid item={true} key={index}>
+        <Grid xs={3} item={true} key={index}>
             <ListItem device={item}/>
         </Grid>)
     })
