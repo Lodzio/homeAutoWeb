@@ -17,7 +17,7 @@ class TopBar extends React.Component {
     public componentDidMount(){
         setInterval(() => {
             this.setState({time: moment().format('H:mm')})
-        }, 60000)
+        }, 30000)
     }
 
     public render(){
