@@ -1,3 +1,5 @@
+import {ADD_NEW_DEVICE} from '../action/actionTypes'
+
 const initialState = {
     devices: [],
     deviceTypes: [
@@ -10,7 +12,11 @@ const initialState = {
 const reducer = (state = initialState, action: any) => {
 
     switch (action.type) {
-
+        case ADD_NEW_DEVICE:
+            return {
+                ...state,
+                devices: [...state.devices, action.device]
+            };
         default:
             return state;
     }

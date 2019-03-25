@@ -7,6 +7,7 @@ const settings = (props: ISettings) => {
     <div>
         {props.isAddNewDeviceFormOpen?
         <NewDeviceForm 
+        onTitleChange={props.onTitleChange}
         deviceTypes={props.deviceTypes}
         isAddNewDeviceButtonActive={props.isAddNewDeviceButtonActive}
         onAddNewDeviceButtonHandler={props.onAddNewDeviceButtonHandler}

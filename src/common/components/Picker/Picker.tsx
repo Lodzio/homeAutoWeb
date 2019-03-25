@@ -19,7 +19,7 @@ const picker = (props: IPicker) => {
             value={props.value}
             onChange={(event) => props.onChange(event.target.value)}
             input={<Input name="age" id="age-label-placeholder" />}
-            displayEmpty={true}
+            // displayEmpty={true}
             inputProps={{
               name: 'age',
               id: 'age-simple',

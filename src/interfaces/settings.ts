@@ -13,7 +13,8 @@ interface INewDeviceForm {
     isAddNewDeviceButtonActive: boolean,
     onTypeChangeHandles: (value: string) => void,
     newDeviceType: string,
-    deviceTypes: IPickerItem[]
+    deviceTypes: IPickerItem[],
+    onTitleChange: (e: any) => void
 }
 
 interface ISettingsPageState {

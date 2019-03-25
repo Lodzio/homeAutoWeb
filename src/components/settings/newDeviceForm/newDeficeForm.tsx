@@ -11,7 +11,7 @@ const newDeviceForm = (props: INewDeviceForm) => {return(
         onChange={props.onTypeChangeHandles} 
         items={props.deviceTypes} 
         value={props.newDeviceType}/>
-        <TextField label={"title"}/>
+        <TextField label={"title"} onChange={props.onTitleChange}/>
     </div>
 )}
 

@@ -1,9 +1,10 @@
 import * as React from 'react';
+import DevicesList from './devicesList/devicesList'
 
-
-const dashboard = (props: IDashboardProps) => {return(
+const dashboard = (props: IDashboardProps) => {
+    return(
     <div>
-        asd
+        <DevicesList devices={props.devices}/>
     </div>
 )}
 
