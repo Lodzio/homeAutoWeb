@@ -1,0 +1,15 @@
+.setting {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+
+.setting .button {
+    color: #b1de00;
+    background-color: #468902;
+}
+
+.setting .button:hover {
+    background-color: #2C5702;
+}

@@ -2,16 +2,17 @@ import * as React from 'react';
 import Button from '@material-ui/core/Button'
 import Picker from '../../../common/components/Picker/Picker'
 import TextField from '@material-ui/core/TextField'
+import './newDeviceForm.css'
 
 const newDeviceForm = (props: INewDeviceForm) => {return(
-    <div>
-        <Button  onClick={props.onAddNewDeviceButtonHandler}>add new device</Button>
+    <div className={"new-device-form"}>
         <Picker 
         label={"type"} 
         onChange={props.onTypeChangeHandles} 
         items={props.deviceTypes} 
         value={props.newDeviceType}/>
-        <TextField label={"title"} onChange={props.onTitleChange}/>
+        <TextField label={"title"} onChange={props.onTitleChange} classes={{root: "text-field"}}/>
+        <Button className={"button"} onClick={props.onAddNewDeviceButtonHandler}>add new device</Button>
     </div>
 )}
 

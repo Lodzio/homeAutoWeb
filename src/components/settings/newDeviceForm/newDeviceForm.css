@@ -1,0 +1,8 @@
+.new-device-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.new-device-form .text-field {
+    border-bottom-color: blue;
+}

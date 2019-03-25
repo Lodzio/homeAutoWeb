@@ -1,0 +1,13 @@
+.top-bar {
+
+}
+
+.top-bar .icon {
+    color: #222222;
+    font-size: 50px;
+    margin: 10px;
+}
+
+.top-bar .active .icon {
+    color: #b1de00;
+}

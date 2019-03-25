@@ -1,15 +1,19 @@
 import * as React from 'react';
-import {NavLink} from 'react-router-dom'
+import NavigationItem from '../navigationItem/navigationItem'
 import {HOME, SETTINGS} from '../../../constants/routes'
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+import DashboardIcon from '@material-ui/icons/Dashboard'
+import SettingsIcon from '@material-ui/icons/Settings'
+import './topBar.css'
 
-const topBar = () => {
+const topBar = () => { 
+
     return (
-        <AppBar position="static">
+        <AppBar color={'default'} position="static" style={{backgroundColor: '#468902'}} className={'top-bar'}>
             <Toolbar>
-                <NavLink to={HOME} exact={true}>Home</NavLink>
-                <NavLink to={SETTINGS} exact={true}>Config</NavLink>
+                <NavigationItem route={HOME}><DashboardIcon className={"icon"}/></NavigationItem>
+                <NavigationItem route={SETTINGS}><SettingsIcon className={"icon"}/></NavigationItem>
             </Toolbar>
         </AppBar>
     )
