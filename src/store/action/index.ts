@@ -1,1 +1,1 @@
-export {addNewDevice} from './device'
+export {addNewDevice, updateDevice} from './device'

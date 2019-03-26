@@ -1,17 +1,31 @@
 .devices-list-item {
-    display: flex;
-    flex-direction: row;
     background-color: #262626;
     border-radius: 3px;
-    padding: 10px;
     margin: 10px;
+    color: #468902;
+}
+
+.devices-list-item .container{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
     color: #468902;
 }
 
 .devices-list-item .icon{
     margin-right: 10px;
+    color: #222222;
+    font-size: 30px;
+}
+
+.devices-list-item .icon.active{
+    color: #468902;
 }
 
 .devices-list-item .title{
-
+    font-size: 16px;
+    /* font-weight: bold; */
 }

@@ -4,7 +4,7 @@ import DevicesList from './devicesList/devicesList'
 const dashboard = (props: IDashboardProps) => {
     return(
     <div>
-        <DevicesList devices={props.devices}/>
+        <DevicesList onDeviceClickHandler={props.onDeviceClickHandler} devices={props.devices}/>
     </div>
 )}
 

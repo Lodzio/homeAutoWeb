@@ -1,12 +1,9 @@
 interface IDashboardProps {
-    devices: IDevice[]
+    devices: IDevice[],
+    onDeviceClickHandler: (index: number) => void
 }
 
 interface IDashboardPageProps {
     devices: IDevice[]
-}
-
-
-interface IDashboardPageState {
-    test: any
+    updateDevice: (device: IDevice, index: number) => void
 }

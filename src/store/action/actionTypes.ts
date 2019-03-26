@@ -1,1 +1,2 @@
 export const ADD_NEW_DEVICE = 'ADD_NEW_DEVICE';
+export const UPDATE_DEVICE = 'UPDATE_DEVICE';
