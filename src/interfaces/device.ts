@@ -17,5 +17,6 @@ interface IDevicesListItem {
 }
 
 interface IDeviceDetails {
-    device: IDevice
+    device: IDevice| null,
+    selectedTypeLabel: string
 }

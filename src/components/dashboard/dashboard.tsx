@@ -10,7 +10,7 @@ const dashboard = (props: IDashboardProps) => {
         <Modal 
         open={props.isDeviceDetailsOpen}
         onClose={props.onDetailsCloseHandler}>
-            <DeviceDetails device={props.devices[0]}/>
+            <DeviceDetails device={props.selectedDevice} selectedTypeLabel={props.selectedTypeLabel}/>
         </Modal>
     </div>
 )}

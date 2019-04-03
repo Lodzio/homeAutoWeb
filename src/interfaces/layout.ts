@@ -15,6 +15,8 @@ interface IModal {
 
 interface ITextField {
     label: string,
-    onChange: (e: any) => void,
-    className?: string
+    onChange?: (e: any) => void,
+    className?: string,
+    defaultValue?: string,
+    disabled?: boolean
 }

@@ -1,6 +1,7 @@
 .device-details {
     display: flex;
-    width: 40%;
+    flex-direction: column;
+    width: auto;
     height: 60%;
     padding: 20px;
     background-color: #222222;

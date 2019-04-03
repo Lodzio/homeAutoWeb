@@ -9,7 +9,9 @@ const textField = (props: ITextField) => {return(
         <TextField 
             label={props.label} 
             onChange={props.onChange}
-            className={props.className}/>
+            className={props.className}
+            defaultValue={props.defaultValue}
+            disabled={props.disabled}/>
     </MuiThemeProvider>
 )}
 

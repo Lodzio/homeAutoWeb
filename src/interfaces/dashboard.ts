@@ -3,14 +3,18 @@ interface IDashboardProps {
     onDeviceClickHandler: (index: number) => void,
     onDeviceDetailsClickHandler: (index: number) => void,
     isDeviceDetailsOpen: boolean,
-    onDetailsCloseHandler: ()=>void
+    onDetailsCloseHandler: ()=>void,
+    selectedDevice: IDevice|null,
+    selectedTypeLabel: string
 }
 
 interface IDashboardPageState {
-    deviceDetailsOpen: boolean
+    deviceDetailsOpen: boolean,
+    selectedDevice: IDevice|null,
 }
 
 interface IDashboardPageProps {
-    devices: IDevice[]
+    devices: IDevice[],
+    deviceTypes: IPickerItem[],
     updateDevice: (device: IDevice, index: number) => void
 }

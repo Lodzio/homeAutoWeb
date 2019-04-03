@@ -16,7 +16,6 @@ const devicesList = (props: IDevicesList) => {
     })
 
     const chunks = createChunks(items, 4);
-    console.log(chunks)
     const list = chunks.map((chunk, index) => 
                 <Grid container={true} key={index}>
                     {chunk}
