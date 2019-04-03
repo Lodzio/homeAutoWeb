@@ -5,14 +5,31 @@ import { updateDevice } from '../../store/action/index'
 
 class DashboardPage extends React.Component<IDashboardPageProps> {
 
+    public state: IDashboardPageState = {
+        deviceDetailsOpen: false,
+    }
+
     public constructor(props: IDashboardPageProps) {
         super(props);
     }
 
     public render() {
         return (
-            <Dashboard devices={this.props.devices} onDeviceClickHandler={this.onDeviceClickHandler}/>
+            <Dashboard 
+            onDetailsCloseHandler={this.onDeviceDetailsEventHandler}
+            devices={this.props.devices} 
+            onDeviceClickHandler={this.onDeviceClickHandler}
+            isDeviceDetailsOpen={this.state.deviceDetailsOpen}
+            onDeviceDetailsClickHandler={this.onDeviceDetailsClickHandler}/>
         );
+    }
+
+    private onDeviceDetailsEventHandler = () => {
+        this.setState({deviceDetailsOpen: false})
+    }
+
+    private onDeviceDetailsClickHandler = (index: number) => {
+        this.setState({deviceDetailsOpen: true})
     }
 
     private onDeviceClickHandler = (index: number) => {

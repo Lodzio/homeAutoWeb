@@ -1,0 +1,8 @@
+.device-details {
+    display: flex;
+    width: 40%;
+    height: 60%;
+    padding: 20px;
+    background-color: #222222;
+    border-radius: 5px;
+}

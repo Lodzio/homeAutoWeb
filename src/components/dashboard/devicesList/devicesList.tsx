@@ -8,7 +8,10 @@ const devicesList = (props: IDevicesList) => {
     const items = props.devices.map((item, index: number) => {
         return (
         <Grid xs={3} item={true} key={index}>
-            <ListItem onClickHandler={() => props.onDeviceClickHandler(index)} device={item}/>
+            <ListItem 
+            onClickHandler={() => props.onDeviceClickHandler(index)} 
+            onDetailsClickHandler={() => props.onDetailsClickHandler(index)}
+            device={item}/>
         </Grid>)
     })
 

@@ -6,10 +6,16 @@ interface IDevice {
 
 interface IDevicesList {
     devices: IDevice[],
-    onDeviceClickHandler: (index: number) => void
+    onDeviceClickHandler: (index: number) => void,
+    onDetailsClickHandler: (index: number) => void,
 }
 
 interface IDevicesListItem {
     device: IDevice,
-    onClickHandler: () => void
+    onClickHandler: () => void,
+    onDetailsClickHandler: () => void,
+}
+
+interface IDeviceDetails {
+    device: IDevice
 }
