@@ -8,7 +8,10 @@ class SettingsPage extends React.Component<ISettingsPageProps> {
         newDevice: {
             title: '',
             type: '',
-            value: null
+            value: null,
+            id: 0,
+            log: [],
+            port: 0
         },
         isAddNewDeviceFormOpen: false,
     };

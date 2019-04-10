@@ -14,7 +14,7 @@ interface INewDeviceForm {
     onTypeChangeHandles: (value: string) => void,
     newDeviceType: string,
     deviceTypes: IPickerItem[],
-    onTitleChange: (e: any) => void
+    onTitleChange: (e: any) => void,
 }
 
 interface ISettingsPageState {

@@ -6,12 +6,12 @@ import './newDeviceForm.css'
 
 const newDeviceForm = (props: INewDeviceForm) => {return(
     <div className={"new-device-form"}>
-        <Picker 
+        <Picker
             label={"type"} 
             onChange={props.onTypeChangeHandles} 
             items={props.deviceTypes} 
             value={props.newDeviceType}/>
-        <TextField 
+        <TextField
             label={"title"} 
             onChange={props.onTitleChange}
             className={'text-field'}/>

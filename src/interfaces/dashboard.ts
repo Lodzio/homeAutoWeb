@@ -5,12 +5,17 @@ interface IDashboardProps {
     isDeviceDetailsOpen: boolean,
     onDetailsCloseHandler: ()=>void,
     selectedDevice: IDevice|null,
-    selectedTypeLabel: string
+    selectedTypeLabel: string,
+    onDeviceTitleChangeHandler: (e: any) => void,
+    onSubmitDeviceEditButtonClick: () => void,
+    onCancelDeviceEditButtonClick: () => void,
+    onDevicePortChangeHandler: (e: any) => void
 }
 
 interface IDashboardPageState {
     deviceDetailsOpen: boolean,
     selectedDevice: IDevice|null,
+    selectedDeviceIndex: number,
 }
 
 interface IDashboardPageProps {

@@ -10,7 +10,14 @@ const dashboard = (props: IDashboardProps) => {
         <Modal 
         open={props.isDeviceDetailsOpen}
         onClose={props.onDetailsCloseHandler}>
-            <DeviceDetails device={props.selectedDevice} selectedTypeLabel={props.selectedTypeLabel}/>
+            <DeviceDetails 
+                device={props.selectedDevice} 
+                selectedTypeLabel={props.selectedTypeLabel}
+                onTitleChange={props.onDeviceTitleChangeHandler}
+                onSubmitButtonClick={props.onSubmitDeviceEditButtonClick}
+                onCancelButtonClick={props.onCancelDeviceEditButtonClick}
+                onPortChange={props.onDevicePortChangeHandler}
+                />
         </Modal>
     </div>
 )}

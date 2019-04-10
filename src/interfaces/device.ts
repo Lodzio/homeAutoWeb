@@ -1,7 +1,15 @@
 interface IDevice {
     title: string,
     type: string,
-    value: any
+    value: any,
+    id: number,
+    port: number,
+    log: ILog[]
+}
+
+interface ILog {
+    time: number,
+    value: number
 }
 
 interface IDevicesList {
@@ -18,5 +26,9 @@ interface IDevicesListItem {
 
 interface IDeviceDetails {
     device: IDevice| null,
-    selectedTypeLabel: string
+    selectedTypeLabel: string,
+    onTitleChange: (e: any) => void,
+    onSubmitButtonClick: () => void,
+    onCancelButtonClick: () => void,
+    onPortChange: (e: any) => void,
 }
