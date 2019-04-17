@@ -20,8 +20,8 @@ interface IDevicesList {
 
 interface IDevicesListItem {
     device: IDevice,
-    onClickHandler: () => void,
-    onDetailsClickHandler: () => void,
+    onClickHandler?: () => void,
+    onDetailsClickHandler?: () => void,
 }
 
 interface IDeviceDetails {

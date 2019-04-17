@@ -1,4 +1,4 @@
-import {ADD_NEW_DEVICE, UPDATE_DEVICE} from '../action/actionTypes'
+import {ADD_NEW_DEVICE, UPDATE_DEVICE, SET_DEVICES} from '../action/actionTypes'
 
 const initialState = {
     devices: Array<any>(),
@@ -23,6 +23,11 @@ const reducer = (state = initialState, action: any) => {
             return {
                 ...state,
                 devices
+            }
+        case SET_DEVICES:
+            return {
+                ...state,
+                devices: action.devices
             }
         default:
             return state;

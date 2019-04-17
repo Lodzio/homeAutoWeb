@@ -31,17 +31,23 @@ class SettingsPage extends React.Component<ISettingsPageProps> {
             isAddNewDeviceButtonActive={this.isAddNewDeviceButtonActive()} 
             onAddNewDeviceButtonHandler={this.onAddNewDeviceButtonHandler}
             onTypeChangeHandles={this.onTypeChangeHandles}
-            newDeviceType={this.state.newDevice.type}/>
+            newDeviceType={this.state.newDevice.type}
+            devices={this.props.devices}/>
         );
     }
 
     private onAddNewDeviceButtonHandler = () => {
+        const {newDevice} = this.state
         this.props.addNewDevice(this.state.newDevice)
         this.setState({
             newDevice: {
+                ...newDevice,
                 title: '',
                 type: '',
-                value: null
+                value: null,
+                id: 0,
+                log: [],
+                port: 0
             },
             isAddNewDeviceFormOpen: false,
         })
@@ -67,7 +73,8 @@ class SettingsPage extends React.Component<ISettingsPageProps> {
 
 const mapStateToProps = (state: any) => {
     return {
-        deviceTypes: state.device.deviceTypes
+        deviceTypes: state.device.deviceTypes,
+        devices: state.device.devices,
     }
 };
 

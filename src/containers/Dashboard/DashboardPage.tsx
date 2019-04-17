@@ -39,7 +39,7 @@ class DashboardPage extends React.Component<IDashboardPageProps> {
         if (!selectedDeviceCopy){
             return;
         }
-        selectedDeviceCopy.port = e.target.value;
+        selectedDeviceCopy.port = Number(e.target.value);
         this.setState({selectedDevice: selectedDeviceCopy})
     }
 

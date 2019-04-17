@@ -1,11 +1,13 @@
 import * as React from 'react';
 import NewDeviceForm from './newDeviceForm/newDeficeForm'
 import Button from '@material-ui/core/Button'
+import DeviesList from './devicesList/devicesList'
 import './settings.css'
 
 const settings = (props: ISettings) => {
     return(
     <div className={"setting"}>
+        <DeviesList devices={props.devices}/>
         {props.isAddNewDeviceFormOpen?
         <NewDeviceForm 
         onTitleChange={props.onTitleChange}

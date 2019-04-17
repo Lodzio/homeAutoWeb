@@ -1,9 +1,10 @@
 interface ISettingsPageProps {
     addNewDevice: (device: IDevice) => void,
     deviceTypes: IPickerItem[],
+    devices: IDevice[],
 }
 
-interface ISettings extends INewDeviceForm {
+interface ISettings extends INewDeviceForm, ISettingsDeviceList {
     isAddNewDeviceFormOpen: boolean,
     onAddNewDeviceFormOpenButtonHandler: () => void,
 }
@@ -20,4 +21,12 @@ interface INewDeviceForm {
 interface ISettingsPageState {
     newDevice: IDevice,
     isAddNewDeviceFormOpen: boolean
+}
+
+interface ISettingsDeviceList {
+    devices: IDevice[],
+}
+
+interface ISettingsDeviceListItem {
+    device: IDevice
 }
