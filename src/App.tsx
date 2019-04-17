@@ -13,7 +13,7 @@ class App extends React.Component {
 
     public constructor(props: any){
         super(props);
-        this.connection = new WebSocket('ws:192.168.1.112:1337');
+        this.connection = new WebSocket('ws:localhost:8999');
 
         this.connection.onopen = () => {
         console.log("Connection opened!");
