@@ -9,7 +9,7 @@ import {fetchDevices} from './store/action'
 
 class App extends React.Component {
 
-    connection: any;
+    private connection: any;
 
     public constructor(props: any){
         super(props);
