@@ -2,7 +2,6 @@ import * as React from 'react'
 import SwitchIcon from '@material-ui/icons/PowerSettingsNew'
 import SensorIcon from '@material-ui/icons/Info'
 import ButtonBase from '@material-ui/core/ButtonBase'
-import Button from '@material-ui/core/Button'
 import './devicesListItem.css'
 
 const devicesListItem = (props: IDevicesListItem) => {
@@ -17,7 +16,6 @@ const devicesListItem = (props: IDevicesListItem) => {
             <div className={'title'}>
                 {props.device.title}
             </div>
-            <Button onClick={props.onDetailsClickHandler}>Details</Button>
         </div>
     )
 }

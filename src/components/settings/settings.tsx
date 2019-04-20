@@ -1,13 +1,24 @@
 import * as React from 'react';
 import NewDeviceForm from './newDeviceForm/newDeficeForm'
 import Button from '@material-ui/core/Button'
-import DeviesList from './devicesList/devicesList'
+import DeviesTable from './devicesTable/devicesTable'
+import DeviceDetails from './deviceDetails/deviceDetails'
+import Modal from '../../common/components/Modal/Modal'
 import './settings.css'
 
 const settings = (props: ISettings) => {
     return(
     <div className={"setting"}>
-        <DeviesList devices={props.devices}/>
+        <Modal 
+            open={props.isDeviceDetailsOpen}
+            onClose={props.onDetailsCloseHandler}>
+            <DeviceDetails 
+            device={props.selectedDevice}
+            onSubmitHandler={props.onDeviceEditSubmitHandler}
+            onCancelHandler={props.onDeviceEditCancelHandler}
+            />
+        </Modal>
+        <DeviesTable devices={props.devices} onDeviceClick={props.onDeviceClick}/>
         {props.isAddNewDeviceFormOpen?
         <NewDeviceForm 
         onTitleChange={props.onTitleChange}

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Settings from '../../components/settings/settings'
 import {connect} from "react-redux";
-import {addNewDevice} from '../../store/action'
+import {addNewDevice, updateDevice} from '../../store/action'
 
 class SettingsPage extends React.Component<ISettingsPageProps> {
     public state: ISettingsPageState = {
@@ -13,6 +13,8 @@ class SettingsPage extends React.Component<ISettingsPageProps> {
             log: [],
             port: 0
         },
+        selectedDeviceIndex: 0,
+        isDeviceDetailsOpen: false,
         isAddNewDeviceFormOpen: false,
     };
 
@@ -24,7 +26,13 @@ class SettingsPage extends React.Component<ISettingsPageProps> {
     public render() {
         return (
             <Settings
+            onDeviceClick={this.onDeviceClickHandler}
             onTitleChange={this.onNewDeviceTitleChangeHandler}
+            onDeviceEditSubmitHandler={this.onDeviceEditSubmitHandler}
+            onDeviceEditCancelHandler={this.onDeviceEditCancelHandler}
+            onDetailsCloseHandler={this.onDeviceDetailsCloseHandler}
+            isDeviceDetailsOpen={this.state.isDeviceDetailsOpen}
+            selectedDevice={this.props.devices[this.state.selectedDeviceIndex]}
             deviceTypes={this.props.deviceTypes}
             onAddNewDeviceFormOpenButtonHandler={this.onAddNewDeviceFormOpenButtonHandler}
             isAddNewDeviceFormOpen={this.state.isAddNewDeviceFormOpen}
@@ -50,6 +58,28 @@ class SettingsPage extends React.Component<ISettingsPageProps> {
                 port: 0
             },
             isAddNewDeviceFormOpen: false,
+        })
+    }
+
+    private onDeviceEditSubmitHandler = (device: IDevice) => {
+        this.props.updateDevice(device, this.state.selectedDeviceIndex)
+        this.onDeviceDetailsCloseHandler();
+    }
+
+    private onDeviceEditCancelHandler = () => {
+        this.onDeviceDetailsCloseHandler();
+    }
+
+    private onDeviceDetailsCloseHandler = () => {
+        this.setState({
+            isDeviceDetailsOpen: false
+        })
+    }
+
+    private onDeviceClickHandler = (index: number) => {
+        this.setState({
+            selectedDeviceIndex: index,
+            isDeviceDetailsOpen: true
         })
     }
 
@@ -81,6 +111,7 @@ const mapStateToProps = (state: any) => {
 const mapDispatchToProps = (dispatch: any) => {
     return {
         addNewDevice: (device: IDevice) => dispatch(addNewDevice(device)),
+        updateDevice: (device: IDevice, index: number) => dispatch(updateDevice(device, index))
     };
 };
 

@@ -1,20 +1,19 @@
 import * as React from 'react';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
-import './devicesListItem.css'
+import './devicesTableItem.css'
 
-const devicesListItem = (props: ISettingsDeviceListItem) => {
+const devicesTableItem = (props: IDevicesTableItem) => {
     const {device} = props;
     console.log(device)
     return(
-        <>
-            <TableRow>
+        <TableRow hover={true} onClick={props.onClick}>
             <TableCell component="th" scope="row">{device.title}</TableCell>
+            <TableCell align="right">{String(device.value)}</TableCell>
             <TableCell align="right">{device.id}</TableCell>
             <TableCell align="right">{device.port}</TableCell>
             <TableCell align="right">{device.type}</TableCell>
-            </TableRow>
-        </>
+        </TableRow>
 )}
 
-export default devicesListItem;
+export default devicesTableItem;

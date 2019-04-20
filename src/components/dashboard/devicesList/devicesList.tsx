@@ -10,7 +10,6 @@ const devicesList = (props: IDevicesList) => {
         <Grid xs={3} item={true} key={index}>
             <ListItem 
             onClickHandler={() => props.onDeviceClickHandler(index)} 
-            onDetailsClickHandler={() => props.onDetailsClickHandler(index)}
             device={item}/>
         </Grid>)
     })

@@ -1,12 +1,18 @@
 interface ISettingsPageProps {
     addNewDevice: (device: IDevice) => void,
+    updateDevice: (device: IDevice, index: number) => void,
     deviceTypes: IPickerItem[],
     devices: IDevice[],
 }
 
-interface ISettings extends INewDeviceForm, ISettingsDeviceList {
+interface ISettings extends INewDeviceForm, IDevicesTable {
     isAddNewDeviceFormOpen: boolean,
     onAddNewDeviceFormOpenButtonHandler: () => void,
+    selectedDevice: IDevice,
+    isDeviceDetailsOpen: boolean,
+    onDetailsCloseHandler: () => void,
+    onDeviceEditSubmitHandler: (device: IDevice) => void
+    onDeviceEditCancelHandler: () => void
 }
 
 interface INewDeviceForm {
@@ -20,13 +26,17 @@ interface INewDeviceForm {
 
 interface ISettingsPageState {
     newDevice: IDevice,
-    isAddNewDeviceFormOpen: boolean
+    isAddNewDeviceFormOpen: boolean,
+    selectedDeviceIndex: number,
+    isDeviceDetailsOpen: boolean
 }
 
-interface ISettingsDeviceList {
+interface IDevicesTable {
     devices: IDevice[],
+    onDeviceClick: (index: number) => void
 }
 
-interface ISettingsDeviceListItem {
+interface IDevicesTableItem {
     device: IDevice
+    onClick: () => void
 }
