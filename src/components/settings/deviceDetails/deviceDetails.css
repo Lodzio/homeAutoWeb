@@ -6,6 +6,7 @@
     padding: 20px;
     background-color: #222222;
     border-radius: 5px;
+    outline: 0;
 }
 .device-details .content{
     display: flex;

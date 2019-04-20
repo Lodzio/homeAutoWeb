@@ -12,9 +12,9 @@ export const MainTheme = createMuiTheme({
             borderBottom: "1px solid rgba(0, 0, 0, 0.42)"
           }
         },
-        // root: {
-        //   color: '#A7B09D'
-        // }
+        input: {
+          color: '#468902'
+        }
       }
     },
     typography: {
