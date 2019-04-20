@@ -1,6 +1,6 @@
 interface ISettingsPageProps {
     addNewDevice: (device: IDevice) => void,
-    updateDevice: (device: IDevice, index: number) => void,
+    updateDevice: (device: IDevice) => void,
     deviceTypes: IPickerItem[],
     devices: IDevice[],
 }

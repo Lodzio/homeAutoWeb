@@ -1,30 +1,22 @@
 import * as React from 'react';
+import {connect} from 'react-redux'
 import {BrowserRouter, Route} from 'react-router-dom';
 import './App.css';
 import {HOME, SETTINGS} from './constants/routes';
 import DashboardPage from "./containers/Dashboard/DashboardPage";
 import SettingsPage from './containers/Settings/SettingsPage'
 import Layout from './components/layout/layout'
-import {fetchDevices} from './store/action'
+import Websocket from './websocket'
+import {receiveMessage} from './store/action'
 
-class App extends React.Component {
-
-    private connection: any;
+class App extends React.Component<any>{
 
     public constructor(props: any){
         super(props);
-        this.connection = new WebSocket('ws:localhost:8999');
-
-        this.connection.onopen = () => {
-        console.log("Connection opened!");
-        };
     }
 
     public componentDidMount(){
-        this.connection.onmessage = (message: any) => {
-            const data = JSON.parse(message.data);
-            fetchDevices(data);
-        }
+        Websocket.onmessage = this.props.receiveMessage;
     }
 
     public render(){
@@ -39,4 +31,17 @@ class App extends React.Component {
     }
 }
 
-export default App;
+const mapStateToProps = (state: any) => {
+    return {
+        devices: state.device.devices,
+        deviceTypes: state.device.deviceTypes
+    }
+};
+
+const mapDispatchToProps = (dispatch: any) => {
+    return {
+        receiveMessage: (message: any) => dispatch(receiveMessage(message)),
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -6,5 +6,5 @@ interface IDashboardProps {
 interface IDashboardPageProps {
     devices: IDevice[],
     deviceTypes: IPickerItem[],
-    updateDevice: (device: IDevice, index: number) => void
+    updateDevice: (device: IDevice) => void
 }

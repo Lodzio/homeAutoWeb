@@ -19,7 +19,8 @@ const reducer = (state = initialState, action: any) => {
             };
         case UPDATE_DEVICE:
             const devices = [...state.devices];
-            devices[action.index] = action.device;
+            const index = devices.findIndex(device => device.id === action.device.id)
+            devices[index] = action.device;
             return {
                 ...state,
                 devices

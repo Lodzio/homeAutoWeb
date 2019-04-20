@@ -1,0 +1,3 @@
+export const UPDATE_DEVICE = "UPDATE_DEVICE"
+export const CREATE_DEVICE = "CREATE_DEVICE"
+export const FETCH_DEVICES = "FETCH_DEVICES"

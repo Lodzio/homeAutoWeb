@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Settings from '../../components/settings/settings'
 import {connect} from "react-redux";
-import {addNewDevice, updateDevice} from '../../store/action'
+import {sendNewDevice, sendUpdatedDevice} from '../../store/action'
 
 class SettingsPage extends React.Component<ISettingsPageProps> {
     public state: ISettingsPageState = {
@@ -62,7 +62,7 @@ class SettingsPage extends React.Component<ISettingsPageProps> {
     }
 
     private onDeviceEditSubmitHandler = (device: IDevice) => {
-        this.props.updateDevice(device, this.state.selectedDeviceIndex)
+        this.props.updateDevice(device)
         this.onDeviceDetailsCloseHandler();
     }
 
@@ -110,8 +110,8 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: any) => {
     return {
-        addNewDevice: (device: IDevice) => dispatch(addNewDevice(device)),
-        updateDevice: (device: IDevice, index: number) => dispatch(updateDevice(device, index))
+        addNewDevice: (device: IDevice) => dispatch(sendNewDevice(device)),
+        updateDevice: (device: IDevice) => dispatch(sendUpdatedDevice(device))
     };
 };
 

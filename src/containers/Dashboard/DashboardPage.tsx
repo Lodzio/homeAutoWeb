@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Dashboard from '../../components/dashboard/dashboard'
 import {connect} from "react-redux";
-import { updateDevice } from '../../store/action/index'
+import { sendUpdatedDevice } from '../../store/action/index'
 
 class DashboardPage extends React.Component<IDashboardPageProps> {
 
@@ -23,7 +23,7 @@ class DashboardPage extends React.Component<IDashboardPageProps> {
         if (device.type === 'button'){
             device.value = !device.value
         }
-        this.props.updateDevice(device, index);
+        this.props.updateDevice(device);
     }
 }
 
@@ -36,7 +36,7 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: any) => {
     return {
-        updateDevice: (device: IDevice, index: number) => dispatch(updateDevice(device, index))
+        updateDevice: (device: IDevice) => dispatch(sendUpdatedDevice(device))
     };
 };
 
