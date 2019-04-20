@@ -15,7 +15,7 @@ export const sendNewDevice = (device: IDevice) => {
     return (dispatch: any) => {
         const data = {
             data: device,
-            type: RequestTypes.UPDATE_DEVICE
+            type: RequestTypes.CREATE_DEVICE
         }
         Websocket.send(JSON.stringify(data));
     }

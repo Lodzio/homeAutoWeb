@@ -2,6 +2,7 @@ import * as React from 'react';
 import Settings from '../../components/settings/settings'
 import {connect} from "react-redux";
 import {sendNewDevice, sendUpdatedDevice} from '../../store/action'
+import {getLowestUnusedId} from '../../utils/ArrayUtils/ArrayTuils'
 
 class SettingsPage extends React.Component<ISettingsPageProps> {
     public state: ISettingsPageState = {
@@ -9,7 +10,7 @@ class SettingsPage extends React.Component<ISettingsPageProps> {
             title: '',
             type: '',
             value: null,
-            id: 0,
+            id: getLowestUnusedId(this.props.devices),
             log: [],
             port: 0
         },
@@ -20,7 +21,16 @@ class SettingsPage extends React.Component<ISettingsPageProps> {
 
     public constructor(props: ISettingsPageProps) {
         super(props);
+    }
 
+    public componentWillReceiveProps(props: ISettingsPageProps){
+        const {newDevice} = this.state
+        this.setState({
+            newDevice: {
+                ...newDevice,
+                id: getLowestUnusedId(props.devices),
+            },
+        })
     }
 
     public render() {
@@ -53,7 +63,7 @@ class SettingsPage extends React.Component<ISettingsPageProps> {
                 title: '',
                 type: '',
                 value: null,
-                id: 0,
+                id: getLowestUnusedId(this.props.devices),
                 log: [],
                 port: 0
             },

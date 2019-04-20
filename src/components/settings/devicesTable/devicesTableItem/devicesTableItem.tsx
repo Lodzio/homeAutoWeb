@@ -5,7 +5,6 @@ import './devicesTableItem.css'
 
 const devicesTableItem = (props: IDevicesTableItem) => {
     const {device} = props;
-    console.log(device)
     return(
         <TableRow hover={true} onClick={props.onClick}>
             <TableCell component="th" scope="row">{device.title}</TableCell>

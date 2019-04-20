@@ -3,9 +3,7 @@ import * as RequestTypes from './requestTypes'
 
 export const receiveMessage = (message: any) => {
     return (dispatch: any) => {
-        console.log(message.data)
         const result = JSON.parse(message.data);
-        console.log(result)
         switch (result.type) {
             case RequestTypes.FETCH_DEVICES:
                 dispatch(setDevices(result.data));
