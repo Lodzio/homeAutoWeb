@@ -9,7 +9,9 @@ const devicesTable = (props: IDevicesTable) => {
         {key: 'id', label: 'Idx'},
         {key: 'port', label: 'Port'},
         {key: 'type', label: 'Type'}]
-    return <Table elements={props.devices} columns={columns} onElementClick={props.onDeviceClick}/>
+    return <div className={'devicesTable'}>
+        <Table elements={props.devices} columns={columns} onElementClick={props.onDeviceClick}/>
+        </div>
 }
 
 export default devicesTable;

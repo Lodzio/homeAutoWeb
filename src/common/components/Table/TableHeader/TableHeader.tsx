@@ -7,9 +7,9 @@ import './TableHeader.css'
 const tableHeader = (props: ITableHeader) => {
     return(
         <TableHead>
-        <TableRow>
+        <TableRow className={'tableHeader'}>
             {props.labels.map((label, index) => 
-                <TableCell align={index !== 0 ? "right":"left"} key={label}>
+                <TableCell className={'cell'} align={index !== 0 ? "right":"left"} key={label}>
                     {label}
                 </TableCell>
             )}

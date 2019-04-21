@@ -2,17 +2,21 @@ import * as React from 'react';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
+import { MainTheme } from '../../../../utils/Themes/Themes';
+import { MuiThemeProvider} from '@material-ui/core/styles'
 import './TableBody.css'
 
 const rowConstructor = (keys: string[], hover: boolean = false) => {
     return (props: {element: any, onClick?: () => void}) => 
-        <TableRow onClick={props.onClick} hover={hover}>
+    <MuiThemeProvider theme={MainTheme}>
+        <TableRow onClick={props.onClick} hover={hover} classes={{hover: 'hover'}}>
             {keys.map((key, index) => 
                 index !== 0 ? 
-                <TableCell align="right" key={key}>{String(props.element[key])}</TableCell>:
-                <TableCell component="th" scope="row" key={key}>{String(props.element[key])}</TableCell>
+                <TableCell classes={{root: 'cell'}} align="right" key={key}>{String(props.element[key])}</TableCell>:
+                <TableCell classes={{root: 'cell'}} component="th" scope="row" key={key}>{String(props.element[key])}</TableCell>
             )}
         </TableRow>
+    </MuiThemeProvider>
 }
 
 const tableBody = (props: ITableBody) => {
@@ -21,7 +25,7 @@ const tableBody = (props: ITableBody) => {
         rowConstructor(props.keys);
     const onClickHandler = (index: number) => () => props.onElementClick && props.onElementClick(index);
     return(
-            <TableBody>
+            <TableBody className={'tableBody'}>
             {props.elements.map((element, index) => (
                 <TableItem key={index} element={element} onClick={onClickHandler(index)}/>
             ))}

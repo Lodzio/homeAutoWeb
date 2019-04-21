@@ -1,0 +1,12 @@
+.tableBody {
+
+}
+
+.tableBody .cell{
+    color: #888;
+    border-bottom-color: #468902; 
+}
+
+.tableBody .hover:hover{
+    background-color: rgba(180, 224, 0, 0.04) !important;
+}
