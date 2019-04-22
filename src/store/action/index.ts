@@ -1,2 +1,2 @@
 export {receiveMessage} from './device'
-export {sendNewDevice, sendUpdatedDevice} from './request'
+export {sendNewDevice, sendUpdatedDevice, sendDeleteRequest} from './request'

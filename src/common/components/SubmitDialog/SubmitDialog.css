@@ -1,0 +1,30 @@
+.submitDialog {
+    background-color: #262626;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 4px;
+    outline: 0;
+    color: #ccc;
+    font-weight: bold;
+}
+
+.submitDialog .buttons{
+    flex-direction: row;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 5px;
+    padding-top: 5px;
+    border-top: 1px solid #444;
+}
+
+.submitDialog .buttons .submit{
+    color: #262626;
+    background-color: #468902;
+}
+.submitDialog .buttons .submit:hover{
+    background-color: #2C5702;
+}
+.submitDialog .buttons .cancel{
+    color: #468902;
+}

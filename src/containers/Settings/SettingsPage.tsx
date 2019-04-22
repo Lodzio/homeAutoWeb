@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Settings from '../../components/settings/settings'
 import {connect} from "react-redux";
-import {sendNewDevice, sendUpdatedDevice} from '../../store/action'
+import {sendNewDevice, sendUpdatedDevice, sendDeleteRequest} from '../../store/action'
 import {getLowestUnusedId} from '../../utils/ArrayUtils/ArrayTuils'
 
 class SettingsPage extends React.Component<ISettingsPageProps> {
@@ -36,6 +36,7 @@ class SettingsPage extends React.Component<ISettingsPageProps> {
     public render() {
         return (
             <Settings
+            onDeviceDeleteHandler={this.onDeviceDeleteHandler}
             onDeviceClick={this.onDeviceClickHandler}
             onTitleChange={this.onNewDeviceTitleChangeHandler}
             onDeviceEditSubmitHandler={this.onDeviceEditSubmitHandler}
@@ -52,6 +53,14 @@ class SettingsPage extends React.Component<ISettingsPageProps> {
             newDeviceType={this.state.newDevice.type}
             devices={this.props.devices}/>
         );
+    }
+
+    private onDeviceDeleteHandler = (id: number) => {
+        const Device = this.props.devices.find(device => device.id === id);
+        if (Device){
+            this.props.sendDeleteRequest(Device)
+            this.onDeviceDetailsCloseHandler();
+        }
     }
 
     private onAddNewDeviceButtonHandler = () => {
@@ -121,7 +130,8 @@ const mapStateToProps = (state: any) => {
 const mapDispatchToProps = (dispatch: any) => {
     return {
         addNewDevice: (device: IDevice) => dispatch(sendNewDevice(device)),
-        updateDevice: (device: IDevice) => dispatch(sendUpdatedDevice(device))
+        updateDevice: (device: IDevice) => dispatch(sendUpdatedDevice(device)),
+        sendDeleteRequest: (device: IDevice) => dispatch(sendDeleteRequest(device))
     };
 };
 

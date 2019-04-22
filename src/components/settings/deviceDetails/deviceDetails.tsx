@@ -2,6 +2,7 @@ import * as React from 'react'
 import {connect} from "react-redux";
 import TextField from '../../../common/components/TextField/TextField'
 import Button from '@material-ui/core/Button'
+import SubmitDialog from '../../../common/components/SubmitDialog/SubmitDialog'
 import './deviceDetails.css'
 
 class DeviceDetails extends React.Component<IDeviceDetailsProps>{
@@ -10,6 +11,8 @@ class DeviceDetails extends React.Component<IDeviceDetailsProps>{
         title: '',
         port: 0,
     }
+
+    private submitDialogHandler: any = null;
 
     public constructor(props: IDeviceDetailsProps){
         super(props)
@@ -59,10 +62,23 @@ class DeviceDetails extends React.Component<IDeviceDetailsProps>{
                     </div>
                     <div className={"buttons"}>
                         <Button className={"submit"} onClick={this.onSubmitClickHandler}>Submit</Button>
+                        <Button className={"delete"} onClick={this.onDeleteHandler}>Delete</Button>
                         <Button className={"cancel"} onClick={this.props.onCancelHandler}>Cancel</Button>
-                    </div>        
+                    </div>       
+                    <SubmitDialog 
+                        ref={e => this.submitDialogHandler = e} 
+                        label={'Are you sure you want to delete this device?'}/> 
                 </div>  
             )
+        }
+    }
+
+    private onDeleteHandler = () => {
+        const {device} = this.props;
+        if (device){
+            this.submitDialogHandler.activateDialog(
+                () => this.props.onDeleteHandler(device.id), 
+                () => {console.log('\'cancel\' clicked')})
         }
     }
 

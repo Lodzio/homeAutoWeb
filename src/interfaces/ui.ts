@@ -45,3 +45,7 @@ interface ITableBodyItem {
     keys: string[];
     onElementClick?: () => void
 }
+
+interface ISubmitDialog {
+    label: string
+}

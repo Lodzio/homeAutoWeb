@@ -28,3 +28,12 @@
 .device-details .buttons .cancel{
     color: #468902;
 }
+.device-details .buttons .delete{
+    color: #262626;
+    background-color: #ff0000;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.device-details .buttons .delete:hover{
+    background-color: #b30000;
+}

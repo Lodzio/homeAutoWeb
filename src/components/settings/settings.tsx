@@ -13,12 +13,15 @@ const settings = (props: ISettings) => {
             open={props.isDeviceDetailsOpen}
             onClose={props.onDetailsCloseHandler}>
             <DeviceDetails 
-            device={props.selectedDevice}
-            onSubmitHandler={props.onDeviceEditSubmitHandler}
-            onCancelHandler={props.onDeviceEditCancelHandler}
-            />
+                device={props.selectedDevice}
+                onSubmitHandler={props.onDeviceEditSubmitHandler}
+                onCancelHandler={props.onDeviceEditCancelHandler}
+                onDeleteHandler={props.onDeviceDeleteHandler}
+                />
         </Modal>
-        <DeviesTable devices={props.devices} onDeviceClick={props.onDeviceClick}/>
+        <DeviesTable 
+            devices={props.devices} 
+            onDeviceClick={props.onDeviceClick}/>
         {props.isAddNewDeviceFormOpen?
         <NewDeviceForm 
         onTitleChange={props.onTitleChange}

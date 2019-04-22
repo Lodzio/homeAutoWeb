@@ -26,7 +26,8 @@ interface IDeviceDetailsProps {
     device: IDevice| null,
     deviceTypes: IPickerItem[],
     onSubmitHandler: (device: IDevice) => void,
-    onCancelHandler: () => void
+    onCancelHandler: () => void,
+    onDeleteHandler: (id: number) => void
 }
 
 interface IDeviceDetailsState {

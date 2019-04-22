@@ -1,4 +1,4 @@
-import {ADD_NEW_DEVICE, UPDATE_DEVICE, SET_DEVICES} from './actionTypes'
+import {ADD_NEW_DEVICE, UPDATE_DEVICE, SET_DEVICES, DELETE_DEVICE} from './actionTypes'
 import * as RequestTypes from './requestTypes'
 
 export const receiveMessage = (message: any) => {
@@ -14,6 +14,8 @@ export const receiveMessage = (message: any) => {
             case RequestTypes.CREATE_DEVICE:
                 dispatch(addNewDevice(result.data));
                 break;
+            case RequestTypes.DELETE_DEVICE:
+                dispatch(deleteDevice(result.data))
         }
     }
 }
@@ -29,6 +31,13 @@ const updateDevice = (device: IDevice) => {
     return {
         device,
         type: UPDATE_DEVICE
+    }
+}
+
+const deleteDevice = (device: IDevice) => {
+    return {
+        device,
+        type: DELETE_DEVICE
     }
 }
 

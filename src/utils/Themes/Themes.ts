@@ -9,11 +9,11 @@ export const MainTheme = createMuiTheme({
             borderBottomColor: '#468902',
           },
           "&&&&:hover:before": {
-            borderBottom: "1px solid rgba(0, 0, 0, 0.42)"
+            borderBottom: "1px solid rgba(255, 255, 255, 0.42)"
           }
         },
         input: {
-          color: '#468902'
+          color: '#aaa'
         }
       }
     },
