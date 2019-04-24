@@ -15,7 +15,11 @@ export const receiveMessage = (message: any) => {
                 dispatch(addNewDevice(result.data));
                 break;
             case RequestTypes.DELETE_DEVICE:
-                dispatch(deleteDevice(result.data))
+                dispatch(deleteDevice(result.data));
+                break;
+            case RequestTypes.DELETE_DEVICE:
+                console.error(result.data);
+                break;
         }
     }
 }
