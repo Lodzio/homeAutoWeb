@@ -1,7 +1,7 @@
 interface IDevice {
     title: string,
     type: string,
-    value: any,
+    value: number,
     id: number,
     port: number,
     log: ILog[]

@@ -53,7 +53,7 @@ class DeviceDetails extends React.Component<IDeviceDetailsProps>{
                         disabled={true}/>
                     <TextField 
                         label={"state"} 
-                        defaultValue={device.value}
+                        defaultValue={String(device.value)}
                         disabled={true}/>
                     <TextField
                         label={"id"} 

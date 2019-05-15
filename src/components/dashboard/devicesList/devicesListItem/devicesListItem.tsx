@@ -5,7 +5,7 @@ import ButtonBase from '@material-ui/core/ButtonBase'
 import './devicesListItem.css'
 
 const devicesListItem = (props: IDevicesListItem) => {
-    const switchClasses = props.device.value? 'icon active': 'icon';
+    const switchClasses = props.device.value === 1? 'icon active': 'icon';
     return(
         <div className={'devices-list-item'}>
             {props.device.type === 'button' && 

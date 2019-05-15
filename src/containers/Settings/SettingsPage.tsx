@@ -9,7 +9,7 @@ class SettingsPage extends React.Component<ISettingsPageProps> {
         newDevice: {
             title: '',
             type: '',
-            value: null,
+            value: 0,
             id: getLowestUnusedId(this.props.devices),
             log: [],
             port: 0
@@ -107,7 +107,7 @@ class SettingsPage extends React.Component<ISettingsPageProps> {
     }
 
     private onTypeChangeHandles = (typeValue: string) => {
-        const deviceValue = typeValue === 'button'? false: 0;
+        const deviceValue = 0;
         this.setState({newDevice: {...this.state.newDevice, type: typeValue, value: deviceValue}})
     }   
 

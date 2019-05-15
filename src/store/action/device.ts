@@ -17,7 +17,7 @@ export const receiveMessage = (message: any) => {
             case RequestTypes.DELETE_DEVICE:
                 dispatch(deleteDevice(result.data));
                 break;
-            case RequestTypes.DELETE_DEVICE:
+            case RequestTypes.ERROR:
                 console.error(result.data);
                 break;
         }

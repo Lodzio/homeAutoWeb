@@ -21,7 +21,7 @@ class DashboardPage extends React.Component<IDashboardPageProps> {
     private onDeviceClickHandler = (index: number) => {
         const device = this.props.devices[index];
         if (device.type === 'button'){
-            device.value = !device.value
+            device.value = (device.value + 1)%2;
         }
         this.props.updateDevice(device);
     }
