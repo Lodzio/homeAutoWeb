@@ -1,0 +1,37 @@
+@keyframes display {
+    0%   {bottom:-200px;}
+    20%  {bottom:100px;}
+    80%  {bottom:100px;}
+    100% {bottom:-200px;}
+  }
+
+.notification {
+    border-radius: 10px;
+    display: block;
+    bottom:-200px;
+    position: relative;
+    left: -50%;
+    width: 300px;
+    background-color: #262626;
+}
+.notification.animation {    
+    animation-name: display;
+    animation-duration: 5s;}
+
+.notification.error {
+    border: 2px solid #f00;
+}
+
+.notification .title{
+    padding: 5px 5px 5px 5px;
+    background-color: #468902;
+    width: 100%;
+    font-weight: bold;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.notification .message{
+    padding: 0px 5px 5px 5px;
+    color: #468902;
+}

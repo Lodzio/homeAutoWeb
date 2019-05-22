@@ -1,7 +1,7 @@
 import {ADD_NEW_DEVICE, UPDATE_DEVICE, SET_DEVICES, DELETE_DEVICE} from './actionTypes'
 import * as RequestTypes from './requestTypes'
 
-export const receiveMessage = (message: any) => {
+export const receiveMessage = (message: any, notificationHandler: any) => {
     return (dispatch: any) => {
         const result = JSON.parse(message.data);
         switch (result.type) {
@@ -18,7 +18,7 @@ export const receiveMessage = (message: any) => {
                 dispatch(deleteDevice(result.data));
                 break;
             case RequestTypes.ERROR:
-                console.error(result.data);
+                notificationHandler.showError(result.data);
                 break;
         }
     }

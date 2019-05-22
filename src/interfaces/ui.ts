@@ -49,3 +49,8 @@ interface ITableBodyItem {
 interface ISubmitDialog {
     label: string
 }
+interface INotificationState{
+    title: 'Error'|'Message',
+    message: string,
+    animation: boolean
+}

@@ -4,6 +4,7 @@ body {
   padding: 0;
   font-family: 'Open Sans' !important;
   background-color: #1E1E1E;
+  overflow: hidden;
 }
 
 * {
