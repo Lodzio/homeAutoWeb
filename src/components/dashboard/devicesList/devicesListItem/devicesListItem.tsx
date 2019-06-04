@@ -16,6 +16,7 @@ const devicesListItem = (props: IDevicesListItem) => {
             <div className={'title'}>
                 {props.device.title}
             </div>
+            <div>{props.device.type === 'sensor'&&props.device.value}</div>
         </div>
     )
 }
