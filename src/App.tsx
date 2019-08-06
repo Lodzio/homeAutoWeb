@@ -19,7 +19,7 @@ class App extends React.Component<any>{
     }
 
     public componentDidMount(){
-        Websocket.onmessage = (message) => this.props.receiveMessage(message, this.notificationSystemRef);
+        Websocket.onmessage = (message: any) => this.props.receiveMessage(message, this.notificationSystemRef);
     }
 
     public render(){
