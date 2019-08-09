@@ -13,11 +13,11 @@ export const sendUpdatedDevice = (device: IDevice) => {
 
 export const switchDevice = (device: IDevice) => {
     return (dispatch: any) => {
-        const data = {
+        const message = {
             data: device,
             type: RequestTypes.SWITCH_DEVICE
         }
-        Websocket.send(JSON.stringify(data));
+        Websocket.send(JSON.stringify(message));
     }
 }
 

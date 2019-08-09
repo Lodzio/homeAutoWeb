@@ -1,12 +1,16 @@
 import * as React from 'react';
 import Dashboard from '../../components/dashboard/dashboard'
 import {connect} from "react-redux";
-import { switchDevice } from '../../store/action/index'
+import { switchDevice, fetchDevices } from '../../store/action/index'
 
 class DashboardPage extends React.Component<IDashboardPageProps> {
 
     public constructor(props: IDashboardPageProps) {
         super(props);
+    }
+
+    public componentDidMount(){
+        this.props.fetchDevices();
     }
 
     public render() {
@@ -36,7 +40,8 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: any) => {
     return {
-        switchDevice: (device: IDevice) => dispatch(switchDevice(device))
+        switchDevice: (device: IDevice) => dispatch(switchDevice(device)),
+        fetchDevices: () => dispatch(fetchDevices())
     };
 };
 

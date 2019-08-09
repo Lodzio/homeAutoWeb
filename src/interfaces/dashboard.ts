@@ -5,6 +5,7 @@ interface IDashboardProps {
 
 interface IDashboardPageProps {
     devices: IDevice[],
+    fetchDevices: () => void
     deviceTypes: IPickerItem[],
     switchDevice: (device: IDevice) => void
 }

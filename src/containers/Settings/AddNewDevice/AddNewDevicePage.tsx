@@ -57,10 +57,7 @@ class AddNewDevice extends React.Component<IAddNewDevicePageProps> {
         this.setState({
             device: {
                 ...this.state.device,
-                title: device.title,
-                id: device.title,
-                type: 'button',
-                interface: 'Shelly'
+                ...device
             }
         })
     }
@@ -74,6 +71,7 @@ class AddNewDevice extends React.Component<IAddNewDevicePageProps> {
     }
     private onAddNewDeviceButtonHandler = () => {
         this.props.addNewDevice(this.state.device)
+        this.props.onCloseComponent();
     }
     private onTypeChangeHandles = (type: string) => {
         this.setState({
