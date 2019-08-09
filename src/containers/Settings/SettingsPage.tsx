@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Settings from '../../components/settings/settings'
 import {connect} from "react-redux";
-import {sendNewDevice, sendUpdatedDevice, sendDeleteRequest} from '../../store/action'
+import {sendUpdatedDevice, sendDeleteRequest, fetchDevices} from '../../store/action'
 import AddNewDevice from './AddNewDevice/AddNewDevicePage'
 import Modal from '../../common/components/Modal/Modal'
 
@@ -9,28 +9,48 @@ class SettingsPage extends React.Component<ISettingsPageProps> {
     public state: ISettingsPageState = {
         selectedDeviceIndex: 0,
         isDeviceDetailsOpen: false,
+        isAddNewDeviceModalOpen: false,
     };
 
     public constructor(props: ISettingsPageProps) {
         super(props);
     }
 
+    public componentDidMount(){
+        this.props.fetchDevices();
+    }
+
     public render() {
         return (
             <div>
-            <Settings
-            onDeviceDeleteHandler={this.onDeviceDeleteHandler}
-            onDeviceClick={this.onDeviceClickHandler}
-            onDeviceEditSubmitHandler={this.onDeviceEditSubmitHandler}
-            onDeviceEditCancelHandler={this.onDeviceEditCancelHandler}
-            onDetailsCloseHandler={this.onDeviceDetailsCloseHandler}
-            isDeviceDetailsOpen={this.state.isDeviceDetailsOpen}
-            selectedDevice={this.props.devices[this.state.selectedDeviceIndex]}
-            devices={this.props.devices}/>
-            <Modal open={true} onClose={()=>console.log()}><AddNewDevice/></Modal>
-
+                <Settings
+                onDeviceDeleteHandler={this.onDeviceDeleteHandler}
+                onDeviceClick={this.onDeviceClickHandler}
+                onDeviceEditSubmitHandler={this.onDeviceEditSubmitHandler}
+                onDeviceEditCancelHandler={this.onDeviceEditCancelHandler}
+                onDetailsCloseHandler={this.onDeviceDetailsCloseHandler}
+                isDeviceDetailsOpen={this.state.isDeviceDetailsOpen}
+                selectedDevice={this.props.devices[this.state.selectedDeviceIndex]}
+                devices={this.props.devices}
+                onAddNewDeviceFormOpen={this.onAddNewDeviceFormOpen}/>
+                <Modal open={this.state.isAddNewDeviceModalOpen} onClose={this.onAddNewDeviceModalCloseHandler}>
+                    <AddNewDevice onCloseComponent={this.onAddNewDeviceModalCloseHandler}/>
+                </Modal>
             </div>
         );
+    }
+
+    private onAddNewDeviceModalCloseHandler = () => {
+        this.setState({
+            isAddNewDeviceModalOpen: false
+        })
+    }
+
+    private onAddNewDeviceFormOpen = () => {
+        this.setState({
+            isAddNewDeviceModalOpen: true
+        })
+
     }
 
     private onDeviceDeleteHandler = (id: number) => {
@@ -73,9 +93,9 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: any) => {
     return {
-        addNewDevice: (device: IDevice) => dispatch(sendNewDevice(device)),
         updateDevice: (device: IDevice) => dispatch(sendUpdatedDevice(device)),
-        sendDeleteRequest: (device: IDevice) => dispatch(sendDeleteRequest(device))
+        sendDeleteRequest: (device: IDevice) => dispatch(sendDeleteRequest(device)),
+        fetchDevices: () => dispatch(fetchDevices())
     };
 };
 

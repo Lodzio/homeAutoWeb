@@ -22,7 +22,7 @@ export const receiveMessage = (message: any, notificationHandler: any) => {
                 break;
             case RequestTypes.ERROR:
                 notificationHandler.showError(result.data);
-                break;
+            break;
         }
     }
 }

@@ -11,6 +11,16 @@ export const sendUpdatedDevice = (device: IDevice) => {
     }
 }
 
+export const switchDevice = (device: IDevice) => {
+    return (dispatch: any) => {
+        const data = {
+            data: device,
+            type: RequestTypes.SWITCH_DEVICE
+        }
+        Websocket.send(JSON.stringify(data));
+    }
+}
+
 export const sendDeleteRequest = (device: IDevice) => {
     return (dispatch: any) => {
         const data = {

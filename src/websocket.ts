@@ -7,7 +7,6 @@ class ReconnectingWebSocket{
     constructor(){
         this.connection = new WebSocket('ws://localhost:8081')
         // axios.get('http://localhost:8080/websocket_port').then(result => {
-        //     console.log(result)
         //     this.connection = new WebSocket('ws:' + window.location.hostname +`:${result.data.port}`)
             this.connection.onmessage = this.onmessageHandler;
             this.connection.onerror = (err: any) => console.error(err)

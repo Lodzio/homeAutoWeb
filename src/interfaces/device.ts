@@ -4,6 +4,7 @@ interface IDevice {
     value: number,
     id: string| number,
     log: ILog[]
+    interface: null|'Shelly'
 }
 
 interface ILog {

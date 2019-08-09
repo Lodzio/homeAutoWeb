@@ -1,12 +1,13 @@
 interface ISettingsPageProps {
-    addNewDevice: (device: IDevice) => void,
     updateDevice: (device: IDevice) => void,
     sendDeleteRequest: (device: IDevice) => void,
+    fetchDevices: () => void,
     deviceTypes: IPickerItem[],
     devices: IDevice[],
 }
 
 interface ISettings extends IDevicesTable {
+    onAddNewDeviceFormOpen: () => void,
     selectedDevice: IDevice,
     isDeviceDetailsOpen: boolean,
     onDetailsCloseHandler: () => void,
@@ -29,11 +30,12 @@ interface INewDeviceForm {
 
 interface ISettingsPageState {
     selectedDeviceIndex: number,
-    isDeviceDetailsOpen: boolean
+    isDeviceDetailsOpen: boolean,
+    isAddNewDeviceModalOpen: boolean,
 }
 
-interface IAddNewDevicePageState extends IDevice{
-    dupa?: number
+interface IAddNewDevicePageState{
+    device: IDevice,
 }
 
 interface IAddNewDevicePageProps {
@@ -42,6 +44,7 @@ interface IAddNewDevicePageProps {
     deviceTypes: IPickerItem[],
     devices: IDevice[],
     detectedDevices: IDevice[],
+    onCloseComponent: () => void
 }
 
 interface IDevicesTable {
