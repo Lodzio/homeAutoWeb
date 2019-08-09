@@ -1,16 +1,22 @@
-import axios from 'axios'
+// import axios from 'axios'
 
 class ReconnectingWebSocket{
-    private connection: any;
+    private connection: null|WebSocket = null;
     private onmessageHandler: any;
+    private sendQueue: any= [];
     constructor(){
-        axios.get('http://localhost:8080/websocket_port').then(result => {
-            console.log(result)
-            this.connection = new WebSocket('ws:' + window.location.hostname +`:${result.data.port}`)
+        this.connection = new WebSocket('ws://localhost:8081')
+        // axios.get('http://localhost:8080/websocket_port').then(result => {
+        //     console.log(result)
+        //     this.connection = new WebSocket('ws:' + window.location.hostname +`:${result.data.port}`)
             this.connection.onmessage = this.onmessageHandler;
-        }).catch((err) => {
-            console.error(err)
-        })
+            this.connection.onerror = (err: any) => console.error(err)
+            this.connection.onopen = (result: any) => {
+                this.sendQueue.forEach((data: any) => this.connection && this.connection.send(data));
+            }
+        // }).catch((err) => {
+        //     console.error(err)
+        // })
     };
     set onmessage(handler: any){
         if (this.connection){
@@ -19,8 +25,12 @@ class ReconnectingWebSocket{
             this.onmessageHandler=handler;
         }
     }
-    public send(...args:any){
-        this.connection.send(...args)
+    public send(data:any){
+        if (this.connection !== null && this.connection.readyState === WebSocket.OPEN){
+            this.connection.send(data)
+        } else {
+            this.sendQueue.push(data);
+        }
     }
 }
 

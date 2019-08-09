@@ -1,6 +1,6 @@
 import * as React from 'react';
-import NewDeviceForm from './newDeviceForm/newDeficeForm'
-import Button from '@material-ui/core/Button'
+// import NewDeviceForm from './newDeviceForm/newDeficeForm'
+// import Button from '@material-ui/core/Button'
 import DeviesTable from './devicesTable/devicesTable'
 import DeviceDetails from './deviceDetails/deviceDetails'
 import Modal from '../../common/components/Modal/Modal'
@@ -22,7 +22,7 @@ const settings = (props: ISettings) => {
         <DeviesTable 
             devices={props.devices} 
             onDeviceClick={props.onDeviceClick}/>
-        {props.isAddNewDeviceFormOpen?
+        {/* {props.isAddNewDeviceFormOpen?
         <NewDeviceForm 
         onTitleChange={props.onTitleChange}
         deviceTypes={props.deviceTypes}
@@ -30,7 +30,7 @@ const settings = (props: ISettings) => {
         onAddNewDeviceButtonHandler={props.onAddNewDeviceButtonHandler}
         newDeviceType={props.newDeviceType}
         onTypeChangeHandles={props.onTypeChangeHandles}/>:
-        <Button className={'button'} onClick={props.onAddNewDeviceFormOpenButtonHandler}>create new device</Button>}
+        <Button className={'button'} onClick={props.onAddNewDeviceFormOpenButtonHandler}>create new device</Button>} */}
     </div>
 )}
 

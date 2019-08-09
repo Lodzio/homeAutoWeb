@@ -9,7 +9,6 @@ class DeviceDetails extends React.Component<IDeviceDetailsProps>{
 
     public state: IDeviceDetailsState = {
         title: '',
-        port: 0,
     }
 
     private submitDialogHandler: any = null;
@@ -18,14 +17,12 @@ class DeviceDetails extends React.Component<IDeviceDetailsProps>{
         super(props)
         if (props.device){
             this.state.title = props.device.title;
-            this.state.port = props.device.port;
         }
     }
 
     public componentWillReceiveProps(props: IDeviceDetailsProps){
         if (props.device){
             this.state.title = props.device.title;
-            this.state.port = props.device.port;
         }
     }
 
@@ -43,10 +40,6 @@ class DeviceDetails extends React.Component<IDeviceDetailsProps>{
                         label={"title"} 
                         onChange={this.onTitleChange}
                         defaultValue={this.state.title}/>
-                    <TextField
-                        label={"port"} 
-                        defaultValue={String(this.state.port)}
-                        onChange={this.onPortChange}/>
                     <TextField 
                         label={"type"} 
                         defaultValue={typeLabel}
@@ -86,7 +79,6 @@ class DeviceDetails extends React.Component<IDeviceDetailsProps>{
         if (this.props.device){
             const device = {...this.props.device};
             device.title = this.state.title;
-            device.port = this.state.port;
             this.props.onSubmitHandler(device);
         }
     }
@@ -94,12 +86,6 @@ class DeviceDetails extends React.Component<IDeviceDetailsProps>{
     private onTitleChange = (e: any) => {
         this.setState({
             title: e.target.value
-        })
-    }
-
-    private onPortChange = (e: any) => {
-        this.setState({
-            port: Number(e.target.value)
         })
     }
 }

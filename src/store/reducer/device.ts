@@ -1,7 +1,8 @@
-import {ADD_NEW_DEVICE, UPDATE_DEVICE, SET_DEVICES, DELETE_DEVICE} from '../action/actionTypes'
+import {ADD_NEW_DEVICE, UPDATE_DEVICE, SET_DEVICES, DELETE_DEVICE, SET_DETECTED_DEVICES} from '../action/actionTypes'
 
 const initialState = {
     devices: Array<any>(),
+    detectedDevices: Array<any>(),
     deviceTypes: [
         {label: 'Button', value: 'button'},
         {label: 'Sensor', value: 'sensor'},
@@ -10,7 +11,6 @@ const initialState = {
 
 
 const reducer = (state = initialState, action: any) => {
-
     switch (action.type) {
         case ADD_NEW_DEVICE:
             return {
@@ -31,6 +31,12 @@ const reducer = (state = initialState, action: any) => {
                 ...state,
                 devices: action.devices
             }
+        case SET_DETECTED_DEVICES: {
+            return {
+                ...state,
+                detectedDevices: action.devices
+            }
+        }
         case DELETE_DEVICE:{
             const devices = state.devices.filter(device => device.id !== action.device.id);
             return {

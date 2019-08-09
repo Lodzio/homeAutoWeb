@@ -7,7 +7,7 @@ const devicesTable = (props: IDevicesTable) => {
         {key: 'title', label: 'Title'},
         {key: 'value', label: 'Value'},
         {key: 'id', label: 'Idx'},
-        {key: 'port', label: 'Port'},
+        {key: 'interface', label: 'Interface'},
         {key: 'type', label: 'Type'}]
     return <div className={'devicesTable'}>
         <Table elements={props.devices} columns={columns} onElementClick={props.onDeviceClick}/>

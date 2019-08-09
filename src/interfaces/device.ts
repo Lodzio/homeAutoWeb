@@ -2,8 +2,7 @@ interface IDevice {
     title: string,
     type: string,
     value: number,
-    id: number,
-    port: number,
+    id: string| number,
     log: ILog[]
 }
 
@@ -27,10 +26,9 @@ interface IDeviceDetailsProps {
     deviceTypes: IPickerItem[],
     onSubmitHandler: (device: IDevice) => void,
     onCancelHandler: () => void,
-    onDeleteHandler: (id: number) => void
+    onDeleteHandler: (id: number| string) => void
 }
 
 interface IDeviceDetailsState {
     title: string,
-    port: number,
 }

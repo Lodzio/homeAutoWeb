@@ -1,4 +1,4 @@
-import {ADD_NEW_DEVICE, UPDATE_DEVICE, SET_DEVICES, DELETE_DEVICE} from './actionTypes'
+import {ADD_NEW_DEVICE, UPDATE_DEVICE, SET_DEVICES, DELETE_DEVICE, SET_DETECTED_DEVICES} from './actionTypes'
 import * as RequestTypes from './requestTypes'
 
 export const receiveMessage = (message: any, notificationHandler: any) => {
@@ -7,6 +7,9 @@ export const receiveMessage = (message: any, notificationHandler: any) => {
         switch (result.type) {
             case RequestTypes.FETCH_DEVICES:
                 dispatch(setDevices(result.data));
+                break;
+            case RequestTypes.FETCH_DETECTED_DEVICES:
+                dispatch(setDetectedDevices(result.data));
                 break;
             case RequestTypes.UPDATE_DEVICE:
                 dispatch(updateDevice(result.data));
@@ -28,6 +31,13 @@ const setDevices = (devices: IDevice[]) => {
     return {
         devices,
         type: SET_DEVICES
+    }
+}
+
+const setDetectedDevices = (devices: IDevice[]) => {
+    return {
+        devices,
+        type: SET_DETECTED_DEVICES
     }
 }
 

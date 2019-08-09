@@ -19,6 +19,7 @@ interface IModal {
 
 interface ITextField {
     label: string,
+    value?: string,
     onChange?: (e: any) => void,
     className?: string,
     defaultValue?: string,

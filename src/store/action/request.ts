@@ -30,3 +30,21 @@ export const sendNewDevice = (device: IDevice) => {
         Websocket.send(JSON.stringify(data));
     }
 }
+
+export const fetchDevices = () => {
+    return (dispatch: any) => {
+        const data = {
+            type: RequestTypes.FETCH_DEVICES
+        }
+        Websocket.send(JSON.stringify(data));
+    }
+}
+
+export const fetchDetectedDevices = () => {
+    return (dispatch: any) => {
+        const data = {
+            type: RequestTypes.FETCH_DETECTED_DEVICES
+        }
+        Websocket.send(JSON.stringify(data));
+    }
+}
