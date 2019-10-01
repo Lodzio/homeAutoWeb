@@ -1,35 +1,36 @@
 interface IDevice {
-    title: string,
-    type: string,
-    value: number,
-    id: string| number,
-    log: ILog[]
-    interface: null|'Shelly'
+	title: string;
+	type: string;
+	value: number;
+	id: string | number;
+	log: ILog[];
+	interface: null | 'Shelly';
 }
 
 interface ILog {
-    time: number,
-    value: number
+	time: number;
+	value: number;
 }
 
 interface IDevicesList {
-    devices: IDevice[],
-    onDeviceClickHandler: (index: number) => void,
+	devices: IDevice[];
+	onDeviceClickHandler: (index: number) => void;
 }
 
 interface IDevicesListItem {
-    device: IDevice,
-    onClickHandler?: () => void,
+	device: IDevice;
+	onClickHandler?: () => void;
 }
 
 interface IDeviceDetailsProps {
-    device: IDevice| null,
-    deviceTypes: IPickerItem[],
-    onSubmitHandler: (device: IDevice) => void,
-    onCancelHandler: () => void,
-    onDeleteHandler: (id: number| string) => void
+	device: IDevice | null;
+	deviceTypes: IPickerItem[];
+	onSubmitHandler: (device: IDevice) => void;
+	onCancelHandler: () => void;
+	onDeleteHandler: (id: number | string) => void;
+	fetchDeviceLogsById: (id: any) => void;
 }
 
 interface IDeviceDetailsState {
-    title: string,
+	title: string;
 }
