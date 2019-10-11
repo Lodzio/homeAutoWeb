@@ -1,8 +1,8 @@
 import * as React from 'react';
 import NewDeficeForm from '../../../components/settings/newDeviceForm/newDeficeForm'
-import {connect} from "react-redux";
-import {sendNewDevice, fetchDetectedDevices} from '../../../store/action'
-import {getLowestUnusedId} from '../../../utils/ArrayUtils/ArrayTuils'
+import { connect } from "react-redux";
+import { sendNewDevice, fetchDetectedDevices } from '../../../store/action'
+import { getLowestUnusedId } from '../../../utils/ArrayUtils/ArrayTuils'
 
 class AddNewDevice extends React.Component<IAddNewDevicePageProps> {
     public state: IAddNewDevicePageState = {
@@ -12,7 +12,7 @@ class AddNewDevice extends React.Component<IAddNewDevicePageProps> {
             value: 0,
             id: getLowestUnusedId(this.props.devices),
             interface: null,
-            log: [],
+            logs: [],
         }
     };
 
@@ -20,13 +20,13 @@ class AddNewDevice extends React.Component<IAddNewDevicePageProps> {
         super(props);
     }
 
-    public componentDidMount(){
+    public componentDidMount() {
         this.props.fetchDetectedDevices();
     }
 
-    public componentWillReceiveProps(props: IAddNewDevicePageProps){
+    public componentWillReceiveProps(props: IAddNewDevicePageProps) {
         this.setState({
-            device :{
+            device: {
                 ...this.state.device,
                 id: getLowestUnusedId(props.devices),
             }
@@ -34,22 +34,22 @@ class AddNewDevice extends React.Component<IAddNewDevicePageProps> {
     }
 
     public render() {
-        const {device} = this.state;
+        const { device } = this.state;
         const isAddNewDeviceButtonActive = device.title !== '';
         return (
             <div>
                 <NewDeficeForm
-                detectedDevices={this.props.detectedDevices}
-                onDetectedDeviceClick={this.onDetectedDeviceClick}
-                title={device.title}
-                onTitleChange={this.onTitleChange}
-                deviceTypes={this.props.deviceTypes}
-                isAddNewDeviceButtonActive={isAddNewDeviceButtonActive}
-                onAddNewDeviceButtonHandler={this.onAddNewDeviceButtonHandler}
-                newDeviceType={device.type}
-                onTypeChangeHandles={this.onTypeChangeHandles}/>
+                    detectedDevices={this.props.detectedDevices}
+                    onDetectedDeviceClick={this.onDetectedDeviceClick}
+                    title={device.title}
+                    onTitleChange={this.onTitleChange}
+                    deviceTypes={this.props.deviceTypes}
+                    isAddNewDeviceButtonActive={isAddNewDeviceButtonActive}
+                    onAddNewDeviceButtonHandler={this.onAddNewDeviceButtonHandler}
+                    newDeviceType={device.type}
+                    onTypeChangeHandles={this.onTypeChangeHandles} />
             </div>
-            
+
         );
     }
     private onDetectedDeviceClick = (id: any) => {

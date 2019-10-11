@@ -45,7 +45,6 @@ const setDevices = (devices: IDevice[]) => {
 };
 
 const setDeviceLogs = (data: { id: string; logs: { value: number; timestamp: number } }) => {
-	console.log('setDeviceLogs', data);
 	return {
 		id: data.id,
 		logs: data.logs,

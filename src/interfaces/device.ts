@@ -3,13 +3,14 @@ interface IDevice {
 	type: string;
 	value: number;
 	id: string | number;
-	log: ILog[];
+	logs: ILog[];
 	interface: null | 'Shelly';
 }
 
 interface ILog {
-	time: number;
+	timestamp: number;
 	value: number;
+	deviceId: string;
 }
 
 interface IDevicesList {

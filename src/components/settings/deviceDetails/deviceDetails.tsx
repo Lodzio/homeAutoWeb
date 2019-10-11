@@ -4,6 +4,8 @@ import { fetchDeviceLogsById } from '../../../store/action';
 import TextField from '../../../common/components/TextField/TextField';
 import Button from '@material-ui/core/Button';
 import SubmitDialog from '../../../common/components/SubmitDialog/SubmitDialog';
+import Chart from "react-apexcharts";
+import * as moment from 'moment'
 import './deviceDetails.css';
 
 class DeviceDetails extends React.Component<IDeviceDetailsProps> {
@@ -37,10 +39,30 @@ class DeviceDetails extends React.Component<IDeviceDetailsProps> {
 		if (!device) {
 			return null;
 		} else {
+			let chart = null;
+			if (device.logs) {
+				chart = (<Chart
+					options={{
+						xaxis: {
+
+							categories: device.logs.map(log => moment(log.timestamp).format('HH:mm:ss'))
+						}
+					}}
+					series={[
+						{
+							name: 'logs',
+							data: device.logs.map(log => log.value)
+						}
+					]}
+				/>)
+			}
 			const deviceType = this.props.deviceTypes.find((type) => type.value === device.type);
 			const typeLabel = deviceType ? deviceType.label : '';
 			return (
 				<div className={'device-details'}>
+					<div style={{ width: 400 }}>
+						{chart}
+					</div>
 					<div className={'content'}>
 						<TextField label={'title'} onChange={this.onTitleChange} defaultValue={this.state.title} />
 						<TextField label={'type'} defaultValue={typeLabel} disabled={true} />
