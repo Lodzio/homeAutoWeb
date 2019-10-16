@@ -13,10 +13,14 @@ interface ISettings extends IDevicesTable {
     onDetailsCloseHandler: () => void,
     onDeviceEditSubmitHandler: (device: IDevice) => void
     onDeviceEditCancelHandler: () => void,
-    onDeviceDeleteHandler: (id: number) => void
+    onDeviceDeleteHandler: (id: string) => void
 }
 
 interface INewDeviceForm {
+    onInterfaceChangeHandles: any,
+    onIdChange: any,
+    id: string,
+    interface: string,
     detectedDevices: IDevice[],
     onDetectedDeviceClick: (index: number) => void
     onAddNewDeviceButtonHandler: () => void,
@@ -34,7 +38,7 @@ interface ISettingsPageState {
     isAddNewDeviceModalOpen: boolean,
 }
 
-interface IAddNewDevicePageState{
+interface IAddNewDevicePageState {
     device: IDevice,
 }
 

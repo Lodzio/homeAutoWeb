@@ -2,7 +2,6 @@ import * as React from 'react';
 import NewDeficeForm from '../../../components/settings/newDeviceForm/newDeficeForm'
 import { connect } from "react-redux";
 import { sendNewDevice, fetchDetectedDevices } from '../../../store/action'
-import { getLowestUnusedId } from '../../../utils/ArrayUtils/ArrayTuils'
 
 class AddNewDevice extends React.Component<IAddNewDevicePageProps> {
     public state: IAddNewDevicePageState = {
@@ -10,7 +9,7 @@ class AddNewDevice extends React.Component<IAddNewDevicePageProps> {
             title: '',
             type: '',
             value: 0,
-            id: getLowestUnusedId(this.props.devices),
+            id: '',
             interface: null,
             logs: [],
         }
@@ -28,7 +27,6 @@ class AddNewDevice extends React.Component<IAddNewDevicePageProps> {
         this.setState({
             device: {
                 ...this.state.device,
-                id: getLowestUnusedId(props.devices),
             }
         })
     }
@@ -47,10 +45,30 @@ class AddNewDevice extends React.Component<IAddNewDevicePageProps> {
                     isAddNewDeviceButtonActive={isAddNewDeviceButtonActive}
                     onAddNewDeviceButtonHandler={this.onAddNewDeviceButtonHandler}
                     newDeviceType={device.type}
-                    onTypeChangeHandles={this.onTypeChangeHandles} />
+                    onTypeChangeHandles={this.onTypeChangeHandles}
+                    id={device.id}
+                    onIdChange={this.onIdChange}
+                    onInterfaceChangeHandles={this.onInterfaceChange}
+                    interface={device.interface} />
             </div>
 
         );
+    }
+    private onInterfaceChange = (deviceInterface: string) => {
+        this.setState({
+            device: {
+                ...this.state.device,
+                interface: deviceInterface
+            }
+        })
+    }
+    private onIdChange = (event: any) => {
+        this.setState({
+            device: {
+                ...this.state.device,
+                id: event.target.value
+            }
+        })
     }
     private onDetectedDeviceClick = (id: any) => {
         const device = this.props.detectedDevices[id];

@@ -2,9 +2,9 @@ interface IDevice {
 	title: string;
 	type: string;
 	value: number;
-	id: string | number;
+	id: string;
 	logs: ILog[];
-	interface: null | 'Shelly';
+	interface: any;
 }
 
 interface ILog {

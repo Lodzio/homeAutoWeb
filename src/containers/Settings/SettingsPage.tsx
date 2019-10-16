@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Settings from '../../components/settings/settings'
-import {connect} from "react-redux";
-import {sendUpdatedDevice, sendDeleteRequest, fetchDevices} from '../../store/action'
+import { connect } from "react-redux";
+import { sendUpdatedDevice, sendDeleteRequest, fetchDevices } from '../../store/action'
 import AddNewDevice from './AddNewDevice/AddNewDevicePage'
 import Modal from '../../common/components/Modal/Modal'
 
@@ -16,7 +16,7 @@ class SettingsPage extends React.Component<ISettingsPageProps> {
         super(props);
     }
 
-    public componentDidMount(){
+    public componentDidMount() {
         this.props.fetchDevices();
     }
 
@@ -24,17 +24,17 @@ class SettingsPage extends React.Component<ISettingsPageProps> {
         return (
             <div>
                 <Settings
-                onDeviceDeleteHandler={this.onDeviceDeleteHandler}
-                onDeviceClick={this.onDeviceClickHandler}
-                onDeviceEditSubmitHandler={this.onDeviceEditSubmitHandler}
-                onDeviceEditCancelHandler={this.onDeviceEditCancelHandler}
-                onDetailsCloseHandler={this.onDeviceDetailsCloseHandler}
-                isDeviceDetailsOpen={this.state.isDeviceDetailsOpen}
-                selectedDevice={this.props.devices[this.state.selectedDeviceIndex]}
-                devices={this.props.devices}
-                onAddNewDeviceFormOpen={this.onAddNewDeviceFormOpen}/>
+                    onDeviceDeleteHandler={this.onDeviceDeleteHandler}
+                    onDeviceClick={this.onDeviceClickHandler}
+                    onDeviceEditSubmitHandler={this.onDeviceEditSubmitHandler}
+                    onDeviceEditCancelHandler={this.onDeviceEditCancelHandler}
+                    onDetailsCloseHandler={this.onDeviceDetailsCloseHandler}
+                    isDeviceDetailsOpen={this.state.isDeviceDetailsOpen}
+                    selectedDevice={this.props.devices[this.state.selectedDeviceIndex]}
+                    devices={this.props.devices}
+                    onAddNewDeviceFormOpen={this.onAddNewDeviceFormOpen} />
                 <Modal open={this.state.isAddNewDeviceModalOpen} onClose={this.onAddNewDeviceModalCloseHandler}>
-                    <AddNewDevice onCloseComponent={this.onAddNewDeviceModalCloseHandler}/>
+                    <AddNewDevice onCloseComponent={this.onAddNewDeviceModalCloseHandler} />
                 </Modal>
             </div>
         );
@@ -53,9 +53,9 @@ class SettingsPage extends React.Component<ISettingsPageProps> {
 
     }
 
-    private onDeviceDeleteHandler = (id: number) => {
+    private onDeviceDeleteHandler = (id: string) => {
         const Device = this.props.devices.find(device => device.id === id);
-        if (Device){
+        if (Device) {
             this.props.sendDeleteRequest(Device)
             this.onDeviceDetailsCloseHandler();
         }
