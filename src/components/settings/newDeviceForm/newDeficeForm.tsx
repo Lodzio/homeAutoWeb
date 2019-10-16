@@ -15,10 +15,20 @@ const newDeviceForm = (props: INewDeviceForm) => {return(
             onChange={props.onTypeChangeHandles} 
             items={props.deviceTypes} 
             value={props.newDeviceType}/>
+        <Picker
+            label={"interface"} 
+            onChange={props.onInterfaceChangeHandles} 
+            items={props.deviceTypes} 
+            value={props.newDeviceType}/>
         <TextField
             label={"title"} 
             value={props.title}
             onChange={props.onTitleChange}
+            className={'text-field'}/>
+        <TextField
+            label={"id"} 
+            value={props.id}
+            onChange={props.inIdChange}
             className={'text-field'}/>
         <Button disabled={!props.isAddNewDeviceButtonActive} className={"button"} onClick={props.onAddNewDeviceButtonHandler}>add new device</Button>
     </div>
