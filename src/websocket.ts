@@ -1,21 +1,21 @@
-// import axios from 'axios'
+import axios from 'axios'
 
 class ReconnectingWebSocket {
     private connection: null | WebSocket = null;
     private onmessageHandler: any;
     private sendQueue: any = [];
     constructor() {
-        this.connection = new WebSocket('ws://192.168.1.8:8091')
-        // axios.get('http://localhost:8080/websocket_port').then(result => {
-        //     this.connection = new WebSocket('ws:' + window.location.hostname +`:${result.data.port}`)
-        this.connection.onmessage = this.onmessageHandler;
-        this.connection.onerror = (err: any) => console.error(err)
-        this.connection.onopen = (result: any) => {
-            this.sendQueue.forEach((data: any) => this.connection && this.connection.send(data));
-        }
-        // }).catch((err) => {
-        //     console.error(err)
-        // })
+        // this.connection = new WebSocket('ws://192.168.43.177:8081')
+        axios.get(`http://${window.location.hostname}:8080/websocket_port`).then(result => {
+            this.connection = new WebSocket('ws:' + window.location.hostname + `:${result.data.port}`)
+            this.connection.onmessage = this.onmessageHandler;
+            this.connection.onerror = (err: any) => console.error(err)
+            this.connection.onopen = (resultws: any) => {
+                this.sendQueue.forEach((data: any) => this.connection && this.connection.send(data));
+            }
+        }).catch((err) => {
+            console.error(err)
+        })
     };
     set onmessage(handler: any) {
         if (this.connection) {
