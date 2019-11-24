@@ -5,7 +5,6 @@ class ReconnectingWebSocket {
     private onmessageHandler: any;
     private sendQueue: any = [];
     constructor() {
-        // this.connection = new WebSocket('ws://192.168.43.177:8081')
         axios.get(`http://${window.location.hostname}:8080/websocket_port`).then(result => {
             this.connection = new WebSocket('ws:' + window.location.hostname + `:${result.data.port}`)
             this.connection.onmessage = this.onmessageHandler;
